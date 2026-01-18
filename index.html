@@ -22,6 +22,10 @@
             overflow-x: hidden;
         }
 
+        .logo img:hover {
+    transform: scale(1.1); /* Animation du logo en haut à gauche quand on passe dessus */
+        }
+        
         /* Scroll fluide quand on clique sur les liens du menu */
         html {
             scroll-behavior: smooth;
@@ -507,7 +511,9 @@
          MENU FIXE
          ============================================ -->
     <header class="header">
-        <div class="logo"><span>ASK</span>20</div>
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo ASK20" style="height: 50px; transition: transform 0.3s;">
+        </div>
         <nav>
             <div class="menu-toggle" onclick="toggleMenu()">☰</div>
             <ul class="nav-menu" id="navMenu">
