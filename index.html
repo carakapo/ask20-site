@@ -612,12 +612,12 @@
     <section id="accueil" class="hero">
         <!-- Vidéo pour desktop -->
         <video class="hero-video" autoplay muted loop playsinline>
-            <source src="https://cdn.pixabay.com/video/2022/11/14/139031-771252746_large.mp4" type="video/mp4">
+            <source src="videos/test.mp4" type="video/mp4">
         </video>
         
         <!-- Image pour mobile -->
-        <img class="hero-image" src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=1200" alt="Karaté">
-        
+        <img class="hero-image" src="images/photo1.jpg" alt="Karaté ASK20">
+
         <!-- Overlay sombre -->
         <div class="hero-overlay"></div>
         
@@ -803,25 +803,7 @@
                 navMenu.classList.remove('active');
             }
 
-            // Fonction pour ouvrir l'image en grand
-        function openImage(src) {
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
-            modal.style.display = 'block';
-            modalImg.src = src;
-        }
 
-        // Fonction pour fermer l'image
-        function closeImage() {
-            const modal = document.getElementById('imageModal');
-            modal.style.display = 'none';
-        }
-
-        // Fermer avec la touche Échap
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeImage();
-            }
         });
 
     </script>
