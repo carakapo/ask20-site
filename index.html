@@ -452,6 +452,84 @@
         }
 
         /* ============================================
+           SECTION GALERIE
+           ============================================ */
+        
+           #galerie {
+            background-color: #000;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 2px solid #ff0000;
+            aspect-ratio: 4/3; /* Format 4:3 pour toutes les photos */
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Remplit le cadre sans déformation */
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1); /* Zoom au survol */
+        }
+
+        /* Modal (popup) pour afficher l'image en grand */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            cursor: pointer;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 3px solid #ff0000;
+            border-radius: 5px;
+        }
+
+        .close {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            color: #fff;
+            font-size: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover {
+            color: #ff0000;
+        }
+
+
+        /* ============================================
            RESPONSIVE (MOBILE)
            ============================================ */
         
@@ -595,6 +673,7 @@
                 <li><a href="#horaires" onclick="closeMenu()">Horaires</a></li>
                 <li><a href="#tarifs" onclick="closeMenu()">Tarifs</a></li>
                 <li><a href="#apropos" onclick="closeMenu()">À propos</a></li>
+                <li><a href="#galerie" onclick="closeMenu()">Galerie</a></li>
                 <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
             </ul>
         </nav>
@@ -633,19 +712,17 @@
         <h2>Horaires & Planning</h2>
         <div class="schedule-grid">
             <div class="schedule-card">
-                <h3>Lundi & Mercredi</h3>
-                <p><strong>18h00 - 19h00</strong><br>Enfants (6-12 ans)</p>
-                <p><strong>19h15 - 20h45</strong><br>Ados & Adultes</p>
+                <h3>Mardi</h3>
+                <p><strong>21h00 - 22h30</strong><br>Adultes</p>
             </div>
             <div class="schedule-card">
-                <h3>Mardi & Jeudi</h3>
-                <p><strong>18h30 - 19h30</strong><br>Compétition</p>
-                <p><strong>19h45 - 21h00</strong><br>Adultes avancés</p>
+                <h3>Mercredi</h3>
+                <p><strong>17h30 - 19h00</strong><br>Enfants & Adultes</p>
             </div>
             <div class="schedule-card">
                 <h3>Samedi</h3>
-                <p><strong>10h00 - 11h30</strong><br>Tous niveaux</p>
-                <p><strong>11h45 - 13h00</strong><br>Préparation compétition</p>
+                <p><strong>19h00 - 20h30</strong><br>Enfants & Adultes</p>
+                <p><strong>20h30 - 22h00</strong><br>Compétition</p>
             </div>
         </div>
     </section>
@@ -658,23 +735,28 @@
         <div class="pricing-container">
             <div class="pricing-card">
                 <h3>Mineurs</h3>
-                <div class="price">180€</div>
+                <div class="price">300€</div>
                 <ul>
-                    <li>2 cours par semaine</li>
-                    <li>Accès à tous les cours enfants</li>
-                    <li>Participation aux compétitions</li>
+                    <li>Accès illimité</li>
                     <li>Licence fédérale incluse</li>
                 </ul>
                 <p style="margin-top: 30px; color: #ffcc00;"><strong>Paiement en 3 fois possible</strong></p>
             </div>
             <div class="pricing-card">
                 <h3>Majeurs</h3>
-                <div class="price">220€</div>
+                <div class="price">400€</div>
                 <ul>
                     <li>Accès illimité</li>
-                    <li>Tous les cours adultes</li>
-                    <li>Préparation compétition</li>
                     <li>Licence fédérale incluse</li>
+                </ul>
+                <p style="margin-top: 30px; color: #ffcc00;"><strong>Paiement en 3 fois possible</strong></p>
+            </div>
+            <div class="pricing-card">
+                <h3>10 séances à la carte</h3>
+                <div class="price">150€</div>
+                <ul>
+                    <li>Accès à 10 séances</li>
+                    <li>Licence fédérale non comprise</li>
                 </ul>
                 <p style="margin-top: 30px; color: #ffcc00;"><strong>Paiement en 3 fois possible</strong></p>
             </div>
@@ -693,21 +775,21 @@
             <div class="about-section">
                 <h3>Le Club ASK20</h3>
                 <p>
-                    L'ASK20 (Association Sportive de Karaté du 20ème) est un club historique parisien fondé en 1985. 
+                    L'ASK20 (Association Sportive de Karaté du 20ème) est un club récent parisien fondé en 2023. 
                     Nous accueillons tous les âges et tous les niveaux, du débutant au compétiteur confirmé.
                 </p>
                 <p>
                     Notre dojo situé dans le 20ème arrondissement de Paris est un lieu d'apprentissage, de dépassement 
-                    de soi et de respect des valeurs martiales. Nous pratiquons le karaté Shotokan, reconnu pour sa 
-                    rigueur technique et son efficacité.
+                    de soi et de respect des valeurs martiales. Nous pratiquons le karaté Shito Ryu et Shotokan, reconnu pour leur 
+                    rigueur technique et leur efficacité.
                 </p>
             </div>
 
             <div class="about-section">
-                <h3>Le Professeur : Maître Tanaka Hiroshi</h3>
+                <h3>Le Professeur : Martin KOFFI BALLOGOU </h3>
                 <p>
-                    Ceinture noire 6ème dan, Maître Tanaka enseigne le karaté depuis plus de 30 ans. Formé au Japon 
-                    auprès des plus grands maîtres, il a représenté la France dans de nombreuses compétitions internationales.
+                    Ceinture noire 5ème dan, Ancien Coach national du Togo Martin enseigne le karaté depuis plus de 30 ans. Il a formé de nombreux pratiquants que ce soit en Afrique ou en France.
+                    Il a notamment ouvert son propre club en France en 2023 et à déjà réussi à propulser ses élèves sur les podiums que ce soit en kata ou en combat.
                 </p>
                 <p>
                     Sa pédagogie allie tradition et modernité, permettant à chaque élève de progresser à son rythme 
@@ -730,16 +812,55 @@
                 <div class="palmares">
                     <h4>🥇 Palmarès 2024</h4>
                     <ul>
-                        <li>Sophie Martin - Championne d'Île-de-France Minimes</li>
-                        <li>Lucas Dubois - Vice-champion de France Cadets Kumite</li>
-                        <li>Emma Petit - Championne de Paris Kata Juniors</li>
-                        <li>Alexandre Chen - Médaillé de bronze Championnats d'Europe</li>
-                        <li>3 qualifiés pour les Championnats de France 2025</li>
+                        <li>Arthur Nhansana - Vice champion de France Shito Ryu 2025 Kata - catégorie Minimes</li>
+                        <li>Florian de Quillacq - Champion de Paris Shotokan 2025 Combat - catégorie Seniors </li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- ============================================
+         SECTION GALERIE
+         ============================================ -->
+         <section id="galerie">
+            <h2>Galerie Photos</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/photo1.jpg" alt="Entraînement karaté" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo2.jpg" alt="Compétition" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo3.jpg" alt="Cours enfants" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo4.jpg" alt="Kata" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo5.jpg" alt="Kumite" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo6.jpg" alt="Dojo" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo7.jpg" alt="Description" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo8.jpg" alt="Description" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo9.jpg" alt="Description" onclick="openImage(this.src)">
+                </div>
+            </div>
+        </section>
+    
+        <!-- Modal pour agrandir les images -->
+        <div id="imageModal" class="modal" onclick="closeImage()">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="modalImage">
+        </div>
 
     <!-- ============================================
          SECTION CONTACT / COURS D'ESSAI
@@ -753,17 +874,17 @@
             </p>
             
             <div class="contact-info">
-                <h3>Contactez Maître Tanaka</h3>
+                <h3>Contactez Martin</h3>
                 <div class="contact-item">
-                    📞 Téléphone : <a href="tel:+33612345678">06 12 34 56 78</a>
+                    📞 Téléphone : <a href="tel:+33673202097">06 73 20 20 97</a>
                 </div>
                 <div class="contact-item">
-                    ✉️ Email : <a href="mailto:contact@ask20.fr">contact@ask20.fr</a>
+                    ✉️ Email : <a href="mailto:askarate20@gmail.com">askarate20@gmail.com</a>
                 </div>
                 <div class="contact-item" style="margin-top: 30px;">
-                    📍 Dojo ASK20<br>
-                    15 Rue de la Réunion<br>
-                    75020 Paris
+                    📍 Dojo ASK20<br><br>
+                    Centre sportif Angélique Duchemin<br>
+                    8 rue Delgrès 75020 Paris
                 </div>
             </div>
         </div>
@@ -800,7 +921,28 @@
             if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
                 navMenu.classList.remove('active');
             }
+
+            // Fonction pour ouvrir l'image en grand
+        function openImage(src) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'block';
+            modalImg.src = src;
+        }
+
+        // Fonction pour fermer l'image
+        function closeImage() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+        }
+
+        // Fermer avec la touche Échap
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeImage();
+            }
         });
+
     </script>
 
 </body>
