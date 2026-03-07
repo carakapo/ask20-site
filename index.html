@@ -461,7 +461,34 @@
             color: #777;
         }
 
+        /* ============================================
+           SECTION PROFESSEUR
+           ============================================ */
+        
+           .professor-container {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
 
+        .professor-photo {
+            flex: 0 0 250px;
+        }
+
+        .professor-photo img {
+            width: 100%;
+            border-radius: 10px;
+            border: 3px solid #ff0000;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .professor-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+    
         /* ============================================
            RESPONSIVE (MOBILE)
            ============================================ */
@@ -586,6 +613,24 @@
 
             .palmares {
                 padding: 20px 15px;
+            }
+         /* Photo professeur centrée sur mobile */
+         .professor-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .professor-photo {
+                flex: none;
+                max-width: 300px;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .professor-text {
+                min-width: auto;
+                width: 100%;
             }
         }
     </style>
@@ -722,15 +767,16 @@
 
             <div class="about-section">
                 <h3>Le Professeur : Martin KOFFI BALLOGOU </h3>
-                <!-- Photo et texte côte à côte -->
-                <div style="display: flex; gap: 30px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 20px;">
+
+                <!-- Photo et texte côte à côte sur desktop, empilés sur mobile -->
+                <div class="professor-container">
                     <!-- Photo du professeur -->
-                    <div style="flex: 0 0 250px;">
-                        <img src="images/professeur.jpg" alt="Martin Koffi Ballogou" style="width: 100%; border-radius: 10px; border: 3px solid #ff0000; box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);">
+                    <div class="professor-photo">
+                        <img src="images/professeur.jpg" alt="Martin Koffi Ballogou">
                     </div>
                     
                     <!-- Texte à côté de la photo -->
-                    <div style="flex: 1; min-width: 300px;">
+                    <div class="professor-text">
                         
                 <p>
                     Ceinture noire 5ème dan, Ancien Coach national du Togo Martin enseigne le karaté depuis plus de 30 ans. Il a formé de nombreux pratiquants que ce soit en Afrique ou en France.
@@ -740,6 +786,8 @@
                     Sa pédagogie allie tradition et modernité, permettant à chaque élève de progresser à son rythme 
                     tout en visant l'excellence.
                 </p>
+                    </div>
+                </div> 
 
                 <div class="palmares">
                     <h4>🏆 Palmarès du Professeur</h4>
