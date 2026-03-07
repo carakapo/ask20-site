@@ -66,6 +66,14 @@
             font-weight: bold;
             color: #fff;
             letter-spacing: 2px;
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .logo span {
@@ -641,9 +649,9 @@
          MENU FIXE
          ============================================ -->
     <header class="header">
-        <div class="logo">
+        <a href="#accueil" class="logo">
             <img src="logo.jpg" alt="Logo ASK20" style="height: 50px; max-width: 180px; object-fit: contain;">
-        </div>
+        </a>
         <nav>
             <div class="menu-toggle" onclick="toggleMenu()">☰</div>
             <ul class="nav-menu" id="navMenu">
